@@ -12,6 +12,8 @@
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "storybook": "start-storybook -p 6006",
+      "predeploy": "npm run build-storybook",
+      "deploy-storybook": "gh-pages -d storybook-static",
       "build-storybook": "build-storybook -o docs",
       "format": "prettier --write ./src/**/*.{js,jsx,ts,tsx}",
       "lint:format": "prettier --check .",
@@ -53,7 +55,9 @@
       "@types/react-dom": "^18.0.11",
       "@vitejs/plugin-react": "^3.1.0",
       "babel-loader": "^8.3.0",
+      "chromatic": "^6.17.2",
       "deepmerge": "^4.3.1",
+      "gh-pages": "^5.0.0",
       "prettier": "^2.8.4",
       "rimraf": "^4.4.0",
       "rollup": "^3.19.1",
