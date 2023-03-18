@@ -37,7 +37,7 @@ jobs:
 
       # Runs to deploy storybook publish file to github page   
       - name: Deploy to GitHub Pages🚀
-        uses: prt/github-pages-deploy-action@3.6.2
+        uses: pradeept95/github-pages-deploy-action
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main # The branch the action should deploy to.
