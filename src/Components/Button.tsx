@@ -1,9 +1,9 @@
 import React from 'react';
 
 export interface ButtonProps {
-   label: string;
-   name : string;
-   onClick: () => void;
+   label?: string;
+   name? : string;
+   onClick?: () => void;
 }
 
 export const Button = (props: ButtonProps & React.HTMLAttributes<HTMLButtonElement>) => {
