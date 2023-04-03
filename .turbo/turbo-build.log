@@ -1,0 +1,10 @@
+
+> @prt-ts/fluent-formik@0.0.0-build-0.1.0 build C:\Users\prade\OneDrive\Desktop\Pradeep\prt-ts-spfx-pkg\workspace-repository\packages\fluent-formik
+> rimraf dist && rollup -c rollup.config.js  --bundleConfigAsCjs
+
+[36m
+[1m./src/index.tsx[22m → [1mdist/cjs/index.js, dist/esm/index.js[22m...[39m
+[32mcreated [1mdist/cjs/index.js, dist/esm/index.js[22m in [1m10s[22m[39m
+[36m
+[1mdist/esm/types/index.d.ts[22m → [1mdist/index.d.ts[22m...[39m
+[32mcreated [1mdist/index.d.ts[22m in [1m164ms[22m[39m
