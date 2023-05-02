@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useId, LabelProps, Checkbox} from "@fluentui/react-components";
-import { Field, InfoLabel } from "@fluentui/react-components/unstable";
+import { useId, LabelProps, Checkbox, Field} from "@fluentui/react-components";
+import { InfoLabel } from "@fluentui/react-components/unstable";
 import { ErrorMessage } from 'formik';
 import { useOptionStyles, useStyles } from "./Styles";
 import { CheckboxInputFieldProps } from "./Types";
@@ -12,13 +12,22 @@ export const CheckboxInputField = ({ label, name, required, layout, options, ena
     const optionStyles = useOptionStyles();
 
     const {
-        helpers,
-        hasError,
-        handleOnChange,
-        handleOnBlur,
-        isChecked,
-        isCheckedAll,
-    } = useCheckboxInputField({ label, name, required, layout, options, enableSelectAll, labelPosition, ...props });
+       helpers,
+       hasError,
+       handleOnChange,
+       handleOnBlur,
+       isChecked,
+       isCheckedAll,
+    } = useCheckboxInputField({
+       label: label,
+       name: name,
+       required: required,
+       layout: layout,
+       options: options,
+       enableSelectAll: enableSelectAll,
+       labelPosition:labelPosition,
+       ...props,
+    });
 
     return (
         <div className={styles.root}>

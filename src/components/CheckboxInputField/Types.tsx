@@ -1,6 +1,5 @@
-import { CheckboxProps, RadioGroupProps } from "@fluentui/react-components";
-import { FieldProps, InfoLabelProps } from "@fluentui/react-components/dist/unstable";
-
+import { CheckboxProps, RadioGroupProps, FieldProps } from "@fluentui/react-components";
+import { InfoLabelProps } from "@fluentui/react-components/dist/unstable";
 
 export type CheckboxOption = CheckboxProps & {
     meta?: any; 
