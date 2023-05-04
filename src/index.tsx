@@ -10,3 +10,11 @@ export {
 export {
     CheckboxInputField as CheckboxInput
 } from "./components/CheckboxInputField";
+
+export {
+    TextareaField as Textarea
+} from "./components/TextareaField";
+
+export {
+    DatePickerField as DatePicker
+} from "./components/DatePickerField";

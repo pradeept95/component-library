@@ -26,7 +26,7 @@ export const CheckboxInputField = ({ label, name, required, layout, options, ena
        options: options,
        enableSelectAll: enableSelectAll,
        labelPosition:labelPosition,
-       ...props,
+       ...props as any,
     });
 
     return (

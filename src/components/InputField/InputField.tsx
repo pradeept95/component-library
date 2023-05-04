@@ -32,9 +32,11 @@ type InputFieldProps = InputProps & FieldProps & InfoLabelProps & {
   label?: string; 
 };
 
-export const InputField = ({ label, name, info, required, onBlur, ...props }: InputFieldProps) => {
+export const InputField = (props: InputFieldProps) => {
   const inputId = useId("input");
   const styles = useStyles();
+
+  const { name, label, info, required, ...rest } = props;
 
   const [field, meta, helpers] = useField(name); 
   const hasError = React.useMemo(() => meta.touched && meta.error, [meta.touched, meta.error]);
@@ -49,7 +51,7 @@ export const InputField = ({ label, name, info, required, onBlur, ...props }: In
   return (
     <div className={styles.root}>
       <Field 
-        {...props}
+        {...rest}
         label={{
           children: (_: unknown, props: LabelProps) => (
             <InfoLabel {...props} info={info}>
@@ -67,7 +69,8 @@ export const InputField = ({ label, name, info, required, onBlur, ...props }: In
           onChange={handleOnChange} 
           id={inputId} 
           onBlur={handleOnBlur} 
-          {...props} /> 
+          required={false} // this is important because we are using the required prop on the Field component and validation is handled by Formik and Yup
+          {...rest} /> 
       </Field>
     </div>
   );
