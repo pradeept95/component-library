@@ -68,8 +68,7 @@ export const TextareaField = (props: TextareaFieldProps) => {
             validationState={hasError ? 'error' : undefined}
             validationMessage={
                hasError ? <ErrorMessage name={name} /> : undefined
-            }
-            required={required}
+            } 
          >
             <Textarea
                {...(rest as any)}

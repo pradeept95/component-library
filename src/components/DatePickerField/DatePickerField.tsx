@@ -75,7 +75,7 @@ export const DatePickerField = (props: DatePickerFieldProps) => {
                {...datePickerProps}
                id={inputId}
                name={name}
-               value={field?.value ?? undefined}
+               value={field?.value ?? null}
                onSelectDate={
                   handleOnChange as (date: Date | null | undefined) => void
                }

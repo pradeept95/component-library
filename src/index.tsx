@@ -13,3 +13,8 @@ export {
    DropdownField as Dropdown,
    DropdownOption,
 } from './components/DropdownField';
+
+export {
+   FileInputField as FileInput,
+   FileInfo,
+} from './components/FileInputField';

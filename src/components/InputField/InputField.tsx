@@ -77,8 +77,7 @@ export const InputField = (props: InputFieldProps) => {
             validationState={hasError ? 'error' : undefined}
             validationMessage={
                hasError ? <ErrorMessage name={name} /> : undefined
-            }
-            required={required}
+            } 
          >
             <Input
                {...inputProps}
