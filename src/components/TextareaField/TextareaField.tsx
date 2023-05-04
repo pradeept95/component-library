@@ -1,29 +1,28 @@
-import * as React from "react";
+import * as React from 'react';
 import {
-  makeStyles, 
-  useId,  
-  LabelProps,
-  FieldProps,
-  Field,
-  Textarea,
-  TextareaProps
-} from "@fluentui/react-components";
-import type { InfoLabelProps } from "@fluentui/react-components/unstable";
-import { InfoLabel } from "@fluentui/react-components/unstable";
-import { useField, ErrorMessage} from 'formik';
-
+   makeStyles,
+   useId,
+   LabelProps,
+   FieldProps,
+   Field,
+   Textarea,
+   TextareaProps,
+} from '@fluentui/react-components';
+import type { InfoLabelProps } from '@fluentui/react-components/unstable';
+import { InfoLabel } from '@fluentui/react-components/unstable';
+import { useField, ErrorMessage } from 'formik';
 
 const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field
-    display: "flex",
-    flexDirection: "column",
-    // Use 2px gap below the label (per the design system)
-    rowGap: "2px", 
+   root: {
+      // Stack the label above the field
+      display: 'flex',
+      flexDirection: 'column',
+      // Use 2px gap below the label (per the design system)
+      rowGap: '2px',
 
-    // add 4px margin to the top of the field
-    marginTop : "4px",
-  },
+      // add 4px margin to the top of the field
+      marginTop: '4px',
+   },
 });
 
 type TextareaFieldProps = TextareaProps &
@@ -33,15 +32,11 @@ type TextareaFieldProps = TextareaProps &
       label?: string;
    };
 
-export const TextareaField = ({
-   label,
-   name,
-   info,
-   required,
-   onBlur,
-   ...props
-}: TextareaFieldProps) => {
+export const TextareaField = (props: TextareaFieldProps) => {
    const inputId = useId('textarea');
+
+   const { label, name, info, required, ...rest } = props;
+
    const styles = useStyles();
 
    const [field, meta, helpers] = useField(name);
@@ -55,16 +50,16 @@ export const TextareaField = ({
    };
    const handleOnBlur: TextareaProps['onBlur'] = () => {
       helpers.setTouched(true, true);
-   }; 
+   };
 
    return (
       <div className={styles.root}>
          <Field
-            {...props}
+            {...rest}
             label={
                {
                   children: (_: unknown, props: LabelProps) => (
-                     <InfoLabel {...props} info={info}>
+                     <InfoLabel {...props} info={info} id={inputId} required={required}>
                         <strong>{label}</strong>
                      </InfoLabel>
                   ),
@@ -77,16 +72,14 @@ export const TextareaField = ({
             required={required}
          >
             <Textarea
+               {...(rest as any)}
                id={inputId}
                name={name}
                value={!!meta.value ? meta.value : ''}
                onChange={handleOnChange}
                onBlur={handleOnBlur}
-               {...props as any}
             />
          </Field>
       </div>
    );
 };
-
-

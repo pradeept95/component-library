@@ -1,6 +1,6 @@
 {
    "name": "@prt-ts/fluent-formik",
-   "version": "1.0.11-fluent-9.19.1",
+   "version": "1.0.14-fluent-9.19.1",
    "description": "Fluent Formik is a component library for React that provides a set of components to build forms using Formik and Fluent UI",
    "main": "dist/cjs/index.js",
    "module": "dist/esm/index.js",

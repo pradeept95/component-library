@@ -21,6 +21,10 @@ type DatePickerFieldProps = DatePickerProps &
 export const DatePickerField = (props: DatePickerFieldProps) => {
    const inputId = useId('date');
    const { label, name, info, required, ...rest } = props;
+   
+   const { ...fieldPros }: FieldProps = rest;
+   const { ...infoLabelProps }: InfoLabelProps = rest;
+   const { ...datePickerProps }: DatePickerProps = rest;
 
    const styles = useDatePickerStyles();
    const [field, meta, helpers] = useField(name);
@@ -47,11 +51,15 @@ export const DatePickerField = (props: DatePickerFieldProps) => {
    return (
       <div className={styles.root}>
          <Field
-            {...props}
+            {...fieldPros}
             label={
                {
                   children: (_: unknown, props: LabelProps) => (
-                     <InfoLabel {...props} info={info}>
+                     <InfoLabel
+                        {...infoLabelProps}
+                        info={info}
+                        required={required}
+                     >
                         <strong>{label}</strong>
                      </InfoLabel>
                   ),
@@ -64,6 +72,7 @@ export const DatePickerField = (props: DatePickerFieldProps) => {
             required={required}
          >
             <DatePicker
+               {...datePickerProps}
                id={inputId}
                name={name}
                value={field?.value ?? undefined}
@@ -71,9 +80,7 @@ export const DatePickerField = (props: DatePickerFieldProps) => {
                   handleOnChange as (date: Date | null | undefined) => void
                }
                onBlur={handleOnBlur}
-               {...rest}
-            /> 
- 
+            />
          </Field>
       </div>
    );

@@ -57,37 +57,48 @@ export const RadioInputField = ({ label, name, options, info, required, onBlur, 
     };
 
     return (
-        <div className={styles.root}>
-            <Field
+       <div className={styles.root}>
+          <Field
+             {...props}
+             label={
+                {
+                   children: (_: unknown, props: LabelProps) => (
+                      <InfoLabel
+                         {...props}
+                         info={info}
+                         id={labelId}
+                         required={required}
+                      >
+                         <strong>{label}</strong>
+                      </InfoLabel>
+                   ),
+                } as any
+             }
+             validationState={hasError ? 'error' : undefined}
+             validationMessage={
+                hasError ? <ErrorMessage name={name} /> : undefined
+             }
+             required={required}
+          >
+             <RadioGroup
                 {...props}
-                label={{
-                    children: (_: unknown, props: LabelProps) => (
-                        <InfoLabel {...props} info={info} id={labelId}>
-                            <strong>{label}</strong>
-                        </InfoLabel>
-                    ),
-                } as any}
-                validationState={hasError ? "error" : undefined}
-                validationMessage={hasError ? <ErrorMessage name={name} /> : undefined}
-                required={required}
-            >
-                <RadioGroup 
-                    {...props} 
-                    onBlur={handleOnBlur}  
-                    value={meta.value?.value} 
-                    onChange={handleOnChange} 
-                    aria-labelledby={labelId}>
-                    {(options || []).map((option) => (
-                        <Radio 
-                            key={option.value} 
-                            {...option}                            
-                            value={option.value} 
-                            label={option.label} 
-                            disabled={option.disabled}/>
-                    ))} 
-                </RadioGroup>
-            </Field>
-        </div>
+                onBlur={handleOnBlur}
+                value={meta.value?.value}
+                onChange={handleOnChange}
+                aria-labelledby={labelId}
+             >
+                {(options || []).map(option => (
+                   <Radio
+                      key={option.value}
+                      {...option}
+                      value={option.value}
+                      label={option.label}
+                      disabled={option.disabled}
+                   />
+                ))}
+             </RadioGroup>
+          </Field>
+       </div>
     );
 };
 

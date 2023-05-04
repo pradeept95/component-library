@@ -35,7 +35,7 @@ export const CheckboxInputField = ({ label, name, required, layout, options, ena
                 {...props}
                 label={{
                     children: (_: unknown, props: LabelProps) => (
-                        <InfoLabel {...props} id={labelId}>
+                        <InfoLabel {...props} id={labelId} required={required}>
                             <strong>{label}</strong>
                         </InfoLabel>
                     ),
