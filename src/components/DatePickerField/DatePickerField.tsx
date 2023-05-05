@@ -16,18 +16,18 @@ type DatePickerFieldProps = DatePickerProps &
    InfoLabelProps & {
       name: string;
       label?: string;
-   };
+   }; 
 
 export const DatePickerField = (props: DatePickerFieldProps) => {
    const inputId = useId('date');
    const { label, name, info, required, ...rest } = props;
-   
+
    const { ...fieldPros }: FieldProps = rest;
    const { ...infoLabelProps }: InfoLabelProps = rest;
    const { ...datePickerProps }: DatePickerProps = rest;
 
    const styles = useDatePickerStyles();
-   const [field, meta, helpers] = useField(name);
+   const [_, meta, helpers] = useField(name);
 
    const hasError = React.useMemo(
       () => meta.touched && meta.error,
@@ -57,6 +57,7 @@ export const DatePickerField = (props: DatePickerFieldProps) => {
                   children: (_: unknown, props: LabelProps) => (
                      <InfoLabel
                         {...infoLabelProps}
+                        id={inputId}
                         info={info}
                         required={required}
                      >
@@ -69,19 +70,17 @@ export const DatePickerField = (props: DatePickerFieldProps) => {
             validationMessage={
                hasError ? <ErrorMessage name={name} /> : undefined
             }
-            required={required}
          >
             <DatePicker
                {...datePickerProps}
                id={inputId}
                name={name}
-               value={field?.value ?? null}
-               onSelectDate={
-                  handleOnChange as (date: Date | null | undefined) => void
-               }
+               value={meta?.value ?? undefined}
+               onSelectDate={(date: Date | null | undefined) => handleOnChange(date)}
                onBlur={handleOnBlur}
             />
          </Field>
       </div>
    );
 };
+
